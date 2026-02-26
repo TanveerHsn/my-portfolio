@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to my portfolio. I am a web developer specializing in Laravel and modern web technologies.">
+    <title>Tanveer Hassan | Full Stack Laravel Developer</title>
+    <link rel="icon" type="image/png" href="profile.png">
+    <link rel="apple-touch-icon" href="profile.png">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0d1117;
+            --secondary-color: #10b981;
+            --accent-color: #22c55e;
+            --dark-bg: #161b22;
+            --card-bg: #21262d;
+            --text-color: #e6edf3;
+            --text-muted: #8b949e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Navbar Animations */
+        .navbar {
+            background-color: var(--primary-color) !important;
+            border-bottom: 1px solid #30363d;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 1rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: var(--secondary-color) !important;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-link {
+            color: var(--text-color) !important;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: var(--secondary-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary-color) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #064e3b 100%);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2310b981' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        /* Profile Image Animation */
+        .profile-img {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(16, 185, 129, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(16, 185, 129, 0.6); }
+        }
+
+        /* Typing Effect */
+        .typing-text {
+            border-right: 3px solid var(--secondary-color);
+            animation: blink 0.7s step-end infinite;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--secondary-color); }
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            margin-bottom: 50px;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        .section-title::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--secondary-color), var(--accent-color));
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+        }
+
+        .section-title:hover::after {
+            width: 100px;
+        }
+
+        /* Card Animations */
+        .card {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 1px solid #30363d;
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+            border-color: var(--secondary-color);
+        }
+
+        /* Icon Animations */
+        .card .bi {
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .bi {
+            transform: scale(1.2);
+            color: var(--accent-color) !important;
+        }
+
+        /* Star Rating Animation */
+        .text-warning .bi-star-fill {
+            animation: star-pop 0.3s ease forwards;
+            opacity: 0;
+        }
+
+        .text-warning .bi-star-fill:nth-child(1) { animation-delay: 0.1s; }
+        .text-warning .bi-star-fill:nth-child(2) { animation-delay: 0.2s; }
+        .text-warning .bi-star-fill:nth-child(3) { animation-delay: 0.3s; }
+        .text-warning .bi-star-fill:nth-child(4) { animation-delay: 0.4s; }
+        .text-warning .bi-star-fill:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes star-pop {
+            0% { opacity: 0; transform: scale(0); }
+            50% { transform: scale(1.3); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Badge Animations */
+        .badge {
+            transition: all 0.3s ease;
+        }
+
+        .badge:hover {
+            transform: scale(1.1);
+        }
+
+        .skill-badge {
+            transition: all 0.3s ease;
+        }
+
+        .skill-badge:hover {
+            background-color: var(--secondary-color);
+            color: #000;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .card-text {
+            color: var(--text-muted);
+        }
+
+        .btn-primary {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: #000;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            color: #000;
+        }
+
+        .btn-outline-primary {
+            color: var(--secondary-color);
+            border-color: var(--secondary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: #000;
+        }
+
+        .btn-light {
+            background-color: var(--text-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline-light:hover {
+            background-color: var(--text-color);
+            color: var(--primary-color);
+        }
+
+        .social-links a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: var(--text-muted);
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-5px) scale(1.2);
+        }
+
+        /* Button Animations */
+        .btn {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .btn:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Floating Animation for Icons */
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+
+        @keyframes floating {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color), #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glow Effect */
+        .glow {
+            text-shadow: 0 0 10px rgba(16, 185, 129, 0.5), 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        /* Progress Bar Animation */
+        .progress-bar {
+            animation: progress-fill 1.5s ease-out forwards;
+            width: 0 !important;
+        }
+
+        @keyframes progress-fill {
+            to { width: var(--progress-width); }
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 30px 0;
+            border-top: 1px solid #30363d;
+        }
+
+        .skill-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 5px;
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .bg-light {
+            background-color: var(--primary-color) !important;
+        }
+
+        .bg-primary {
+            background-color: var(--secondary-color) !important;
+        }
+
+        .text-primary {
+            color: var(--secondary-color) !important;
+        }
+
+        .text-muted {
+            color: var(--text-muted) !important;
+        }
+
+        .progress {
+            background-color: #30363d;
+        }
+
+        .progress-bar {
+            background-color: var(--secondary-color) !important;
+        }
+
+        .form-control {
+            background-color: var(--card-bg);
+            border-color: #30363d;
+            color: var(--text-color);
+        }
+
+        .form-control:focus {
+            background-color: var(--card-bg);
+            border-color: var(--secondary-color);
+            color: var(--text-color);
+            box-shadow: 0 0 0 0.25rem rgba(16, 185, 129, 0.25);
+        }
+
+        .form-label {
+            color: var(--text-color);
+        }
+
+        .badge.bg-secondary {
+            background-color: #30363d !important;
+            color: var(--text-muted);
+        }
+
+        .badge.bg-primary {
+            background-color: var(--secondary-color) !important;
+            color: #000;
+        }
+
+        .badge.bg-success {
+            background-color: #22c55e !important;
+            color: #000;
+        }
+
+        .badge.bg-warning {
+            background-color: #eab308 !important;
+        }
+
+        .card-subtitle {
+            color: var(--text-muted) !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-color);
+        }
+
+        .btn-outline-dark {
+            color: var(--text-muted);
+            border-color: #30363d;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: #30363d;
+            border-color: #30363d;
+            color: var(--text-color);
+        }
+
+        .rounded-circle.bg-primary {
+            background-color: rgba(16, 185, 129, 0.15) !important;
+            color: var(--secondary-color) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="profile.png" alt="Tanveer Hassan" class="rounded-circle me-2" width="35" height="35" style="object-fit: cover; border: 2px solid var(--secondary-color);">
+                Tanveer Hassan
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="projects.html">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <img src="profile.png" alt="Tanveer Hassan" class="rounded-circle mb-4 profile-img" width="150" height="150" style="object-fit: cover; border: 3px solid var(--secondary-color);" data-aos="zoom-in" data-aos-duration="1000">
+                    <h1 class="display-4 fw-bold mb-3 gradient-text" data-aos="fade-up" data-aos-delay="200">Hi, I'm Tanveer Hassan</h1>
+                    <p class="lead mb-4" data-aos="fade-up" data-aos-delay="400">Full Stack | Laravel Developer | PHP Developer | Laravel Vue Developer</p>
+                    <p class="mb-4" data-aos="fade-up" data-aos-delay="600">Your Laravel app is broken, slow, or stuck? I won't just patch it — I'll actually fix it.</p>
+                    <div class="d-flex justify-content-center gap-3" data-aos="fade-up" data-aos-delay="800">
+                        <a href="projects.html" class="btn btn-light btn-lg">View My Work</a>
+                        <a href="contact.html" class="btn btn-outline-light btn-lg">Get In Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upwork Reviews Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Client Reviews on Upwork</h2>
+            <div class="row justify-content-center mb-5">
+                <div class="col-auto">
+                    <div class="d-flex flex-wrap justify-content-center gap-4">
+                        <div class="text-center">
+                            <span class="badge bg-success px-3 py-2 fs-6"><i class="bi bi-briefcase me-2"></i>2 Active Projects</span>
+                        </div>
+                        <div class="text-center">
+                            <span class="badge bg-primary px-3 py-2 fs-6"><i class="bi bi-patch-check-fill me-2"></i>Top Rated Plus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-muted mb-5"><i class="bi bi-patch-check-fill text-success me-2"></i>Verified reviews from completed projects</p>
+
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4 border-success" style="border-width: 2px !important;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-success"><i class="bi bi-circle-fill me-1" style="font-size: 0.5rem;"></i>In Progress</span>
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                            </div>
+                            <p class="card-text fst-italic">"Best dev I ever worked with. By far."</p>
+                            <small class="text-muted">Fullstack PHP Laravel CTO - Dutch Educational Website</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4 border-success" style="border-width: 2px !important;">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="badge bg-success"><i class="bi bi-circle-fill me-1" style="font-size: 0.5rem;"></i>In Progress</span>
+                            </div>
+                            <p class="card-text">Currently working on urgent Laravel development tasks for this client.</p>
+                            <small class="text-muted">Laravel Developer - Urgent Task</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="badge bg-success">5.0</span>
+                            </div>
+                            <p class="card-text fst-italic">"Tanveer went above and beyond to deliver outstanding results for my Laravel project. His expertise and attention to detail were exceptional. He also provided valuable insights that enhanced the overall functionality and user experience."</p>
+                            <small class="text-muted">Laravel Bug Fix Project</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="badge bg-success">5.0</span>
+                            </div>
+                            <p class="card-text fst-italic">"I highly recommend Tanveer for Vue and Laravel development. He possesses a deep understanding of the internal workings of Vue.js and Laravel. Tanveer's professionalism and clear communication contributed to a seamless collaboration."</p>
+                            <small class="text-muted">Laravel Website Bug Fix</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="badge bg-success">5.0</span>
+                            </div>
+                            <p class="card-text fst-italic">"Tanveer is a great developer and did an excellent job on all tasks assigned to him. Thank you and look forward to collaborating more in the future."</p>
+                            <small class="text-muted">Web Developer (Long Term)</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="badge bg-success">5.0</span>
+                            </div>
+                            <p class="card-text fst-italic">"He understood right away what I was talking about and fulfilled all my wishes. He's very kind and responsive, that made working with him very pleasing. I would hire him again anytime!"</p>
+                            <small class="text-muted">Website Font Test</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="badge bg-success">5.0</span>
+                            </div>
+                            <p class="card-text fst-italic">"Excellent work! He's very professional and gets the job done in a timely manner. I highly recommend him!"</p>
+                            <small class="text-muted">Laravel Payment Module</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100 p-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="text-warning">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                </div>
+                                <span class="badge bg-success">5.0</span>
+                            </div>
+                            <p class="card-text fst-italic">"I hired Hassan for the second time and I'm totally happy again. He implemented everything I asked for and was always kind. Would hire him again anytime. :)"</p>
+                            <small class="text-muted">Repeat Client</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client Video Recommendation -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Video Recommendation</h2>
+            <p class="text-center text-muted mb-5" data-aos="fade-up"><i class="bi bi-camera-video-fill text-success me-2"></i>A client personally recorded this recommendation</p>
+            <div class="row justify-content-center" data-aos="fade-up">
+                <div class="col-lg-7 col-md-10">
+                    <div class="card p-3" style="border-color: var(--secondary-color); border-width: 2px !important;">
+                        <video
+                            controls
+                            preload="metadata"
+                            style="width: 100%; border-radius: 8px; display: block;"
+                            poster="">
+                            <source src="recommended.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="d-flex align-items-center gap-2 mt-3 px-1">
+                            <i class="bi bi-patch-check-fill text-success fs-5"></i>
+                            <span class="text-muted" style="font-size: 0.9rem;">Verified client recommendation &mdash; recorded voluntarily</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What I Do Section -->
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Projects I Handle Best</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-rocket-takeoff display-4 text-primary mb-3 floating"></i>
+                            <h4 class="card-title">Build From Scratch</h4>
+                            <p class="card-text">Custom Laravel applications built from the ground up with clean architecture and scalable code.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-bug display-4 text-primary mb-3 floating"></i>
+                            <h4 class="card-title">Bug Fixing</h4>
+                            <p class="card-text">Complex bug hunting and fixing. I find and resolve issues that others can't figure out.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-calendar-check display-4 text-primary mb-3 floating"></i>
+                            <h4 class="card-title">Long-Term Support</h4>
+                            <p class="card-text">Ongoing maintenance, updates, and feature development for your existing applications.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-lightning-charge display-4 text-primary mb-3 floating"></i>
+                            <h4 class="card-title">Short-Term Support</h4>
+                            <p class="card-text">Quick fixes, urgent deployments, and rapid feature implementations when you need them fast.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-wrench-adjustable display-4 text-primary mb-3 floating"></i>
+                            <h4 class="card-title">Legacy Code Rescue</h4>
+                            <p class="card-text">"Unfixable" legacy codebases needing a rescue specialist who thrives where others give up.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="card h-100 text-center p-4">
+                        <div class="card-body">
+                            <i class="bi bi-speedometer2 display-4 text-primary mb-3 floating"></i>
+                            <h4 class="card-title">Performance Optimization</h4>
+                            <p class="card-text">Speed up slow applications, optimize database queries, and handle high-traffic scaling.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Projects Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="text-center section-title" data-aos="fade-up">Featured Projects</h2>
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge bg-warning text-dark mb-2">Built From Scratch</span>
+                            <h5 class="card-title">OpenAI Chatbot Platform</h5>
+                            <p class="card-text">Admin and User Dashboard with chatbot training, complex reporting, tamper-proof activity logs, and product analytics.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-secondary">Laravel</span>
+                                <span class="badge bg-secondary">Vue.js</span>
+                                <span class="badge bg-secondary">OpenAI API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">Education</span>
+                            <h5 class="card-title">Eindexamensite</h5>
+                            <p class="card-text">Dutch educational platform with real-time student-teacher chat, SSO integration, and optimized performance for students and educators.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-secondary">Laravel</span>
+                                <span class="badge bg-secondary">SSO</span>
+                                <span class="badge bg-secondary">Real-time Chat</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <span class="badge bg-info text-dark mb-2">Healthcare</span>
+                            <h5 class="card-title">Healthcare Learning Platform</h5>
+                            <p class="card-text">Course catalog with QR code integration for instant class joining, filterable by specialty, course type, and pricing.</p>
+                            <div class="d-flex flex-wrap gap-1">
+                                <span class="badge bg-secondary">Laravel</span>
+                                <span class="badge bg-secondary">QR Codes</span>
+                                <span class="badge bg-secondary">Course Catalog</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-4">
+                <a href="projects.html" class="btn btn-outline-primary btn-lg">View All 11 Projects</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <div class="social-links mb-3">
+                <a href="https://github.com/TanveerHsn" target="_blank"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/tanveerhsn/" target="_blank"><i class="bi bi-linkedin"></i></a>
+                <a href="mailto:tanveerhasan.liaqat@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+            </div>
+            <p class="mb-0">&copy; <span id="year"></span> Tanveer Hassan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        // Current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Set active nav link
+        document.querySelector('a[href="index.html"]').classList.add('active');
+
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Trigger star animations when visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.querySelectorAll('.bi-star-fill').forEach(star => {
+                        star.style.animationPlayState = 'running';
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.text-warning').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

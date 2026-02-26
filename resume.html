@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanveer Hassan - Resume</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a2e;
+            background: #f8f9fa;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .page {
+            max-width: 850px;
+            margin: 30px auto;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #0d1117 0%, #064e3b 100%);
+            color: #fff;
+            padding: 40px 50px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .header-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #10b981;
+            flex-shrink: 0;
+        }
+
+        .header-info h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .header-info .title {
+            font-size: 1rem;
+            color: #10b981;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .header-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 20px;
+            font-size: 0.82rem;
+            color: #cdd5dc;
+        }
+
+        .header-contacts span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-contacts a {
+            color: #10b981;
+            text-decoration: none;
+        }
+
+        /* Body layout */
+        .body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: #f1f5f4;
+            padding: 30px 25px;
+            border-right: 1px solid #e0e0e0;
+        }
+
+        /* Main content */
+        .main {
+            padding: 30px 35px;
+        }
+
+        /* Section */
+        .section { margin-bottom: 28px; }
+
+        .section-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #10b981;
+            border-bottom: 2px solid #10b981;
+            padding-bottom: 5px;
+            margin-bottom: 14px;
+        }
+
+        /* Skills */
+        .skill-item { margin-bottom: 10px; }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.82rem;
+            margin-bottom: 4px;
+            color: #333;
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: #dde2e0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #22c55e);
+            border-radius: 3px;
+        }
+
+        /* Tech badges */
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .tech-badge {
+            background: rgba(16, 185, 129, 0.12);
+            color: #064e3b;
+            border: 1px solid #10b981;
+            border-radius: 12px;
+            padding: 3px 10px;
+            font-size: 0.78rem;
+            font-weight: 500;
+        }
+
+        /* Profile / summary */
+        .summary p {
+            color: #444;
+            font-size: 0.88rem;
+            line-height: 1.65;
+        }
+
+        /* Experience entries */
+        .exp-item { margin-bottom: 18px; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3px;
+        }
+
+        .exp-title {
+            font-weight: 700;
+            font-size: 0.92rem;
+            color: #0d1117;
+        }
+
+        .exp-date {
+            font-size: 0.78rem;
+            color: #10b981;
+            font-weight: 600;
+            white-space: nowrap;
+            margin-left: 10px;
+        }
+
+        .exp-company {
+            font-size: 0.82rem;
+            color: #10b981;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .exp-desc {
+            font-size: 0.82rem;
+            color: #555;
+            line-height: 1.55;
+        }
+
+        .exp-desc ul {
+            padding-left: 16px;
+            margin-top: 4px;
+        }
+
+        .exp-desc li { margin-bottom: 2px; }
+
+        /* Project entries */
+        .project-item { margin-bottom: 14px; }
+
+        .project-name {
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: #0d1117;
+            margin-bottom: 2px;
+        }
+
+        .project-tags { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 3px; }
+
+        .project-tag {
+            background: #0d1117;
+            color: #10b981;
+            font-size: 0.7rem;
+            padding: 1px 7px;
+            border-radius: 8px;
+        }
+
+        .project-desc {
+            font-size: 0.8rem;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        /* Contact info (sidebar) */
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 10px;
+            font-size: 0.82rem;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .contact-icon {
+            color: #10b981;
+            font-size: 1rem;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        /* Achievements */
+        .achievement-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 0.82rem;
+            color: #333;
+        }
+
+        .achievement-icon { color: #10b981; font-size: 1rem; }
+
+        /* Print button (hidden on print) */
+        .print-bar {
+            background: #0d1117;
+            color: #fff;
+            padding: 12px 50px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .print-bar span { font-size: 0.85rem; color: #8b949e; }
+
+        .btn-print {
+            background: #10b981;
+            color: #000;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
+        .btn-print:hover { background: #22c55e; }
+
+        @media print {
+            .print-bar { display: none; }
+            body { background: #fff; }
+            .page { box-shadow: none; margin: 0; max-width: 100%; }
+        }
+
+        @media (max-width: 650px) {
+            .body { grid-template-columns: 1fr; }
+            .header { flex-direction: column; text-align: center; padding: 30px 25px; }
+            .header-contacts { justify-content: center; }
+            .main, .sidebar { padding: 20px 20px; }
+        }
+    </style>
+    <!-- Bootstrap Icons for print bar -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Print / Download bar -->
+    <div class="print-bar">
+        <span>Tanveer Hassan &mdash; Resume</span>
+        <button class="btn-print" onclick="window.print()">
+            <i class="bi bi-printer me-1"></i> Print / Save as PDF
+        </button>
+    </div>
+
+    <div class="page">
+
+        <!-- Header -->
+        <div class="header">
+            <img src="profile.png" alt="Tanveer Hassan" class="header-photo">
+            <div class="header-info">
+                <h1>Tanveer Hassan</h1>
+                <div class="title">Full Stack Laravel Developer &bull; PHP &bull; Vue.js</div>
+                <div class="header-contacts">
+                    <span><i class="bi bi-envelope-fill"></i> tanveerhasan.liaqat@gmail.com</span>
+                    <span><i class="bi bi-geo-alt-fill"></i> Lahore, Pakistan</span>
+                    <span><i class="bi bi-github"></i> <a href="https://github.com/TanveerHsn" target="_blank">github.com/TanveerHsn</a></span>
+                    <span><i class="bi bi-linkedin"></i> <a href="https://www.linkedin.com/in/tanveerhsn/" target="_blank">linkedin.com/in/tanveerhsn</a></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="body">
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+
+                <!-- Skills -->
+                <div class="section">
+                    <div class="section-title">Technical Skills</div>
+
+                    <div class="skill-item">
+                        <div class="skill-label"><span>HTML / CSS</span><span>95%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Laravel / PHP</span><span>96%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:96%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Full-Stack Development</span><span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>API Integration</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Tailwind CSS</span><span>88%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>SQL</span><span>85%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>JavaScript / jQuery</span><span>80%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Vue.js</span><span>80%</span></div>
+                        <div class="skill-bar"><div class="skill-fill" style="width:80%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Technologies -->
+                <div class="section">
+                    <div class="section-title">Skills</div>
+                    <div class="tech-grid">
+                        <span class="tech-badge">Full-Stack Development</span>
+                        <span class="tech-badge">Back-End Development</span>
+                        <span class="tech-badge">Front-End Development</span>
+                        <span class="tech-badge">Web Development</span>
+                        <span class="tech-badge">Web Design</span>
+                        <span class="tech-badge">Laravel</span>
+                        <span class="tech-badge">PHP</span>
+                        <span class="tech-badge">Vue.js</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">jQuery</span>
+                        <span class="tech-badge">HTML</span>
+                        <span class="tech-badge">CSS</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">API Integration</span>
+                        <span class="tech-badge">SQL</span>
+                    </div>
+                </div>
+
+                <!-- Achievements -->
+                <div class="section">
+                    <div class="section-title">Achievements</div>
+                    <div class="achievement-item">
+                        <i class="bi bi-patch-check-fill achievement-icon"></i>
+                        <span><strong>Top Rated Plus</strong> on Upwork</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="bi bi-star-fill achievement-icon"></i>
+                        <span>5.0 rating across all completed projects</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="bi bi-briefcase-fill achievement-icon"></i>
+                        <span>2 active long-term clients</span>
+                    </div>
+                    <div class="achievement-item">
+                        <i class="bi bi-graph-up-arrow achievement-icon"></i>
+                        <span>Experience with 10,000+ user platforms</span>
+                    </div>
+                </div>
+
+                <!-- Contact -->
+                <div class="section">
+                    <div class="section-title">Contact</div>
+                    <div class="contact-item">
+                        <i class="bi bi-envelope-fill contact-icon"></i>
+                        <span>tanveerhasan.liaqat@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-geo-alt-fill contact-icon"></i>
+                        <span>Lahore, Pakistan</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-clock-fill contact-icon"></i>
+                        <span>Available Mon–Fri, 9AM–6PM</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-github contact-icon"></i>
+                        <span>github.com/TanveerHsn</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="bi bi-linkedin contact-icon"></i>
+                        <span>linkedin.com/in/tanveerhsn</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Main Content -->
+            <div class="main">
+
+                <!-- Summary -->
+                <div class="section summary">
+                    <div class="section-title">Professional Summary</div>
+                    <p>
+                        Dedicated Full Stack Laravel Developer with proven experience building, rescuing, and optimizing web applications.
+                        Top Rated Plus on Upwork with a 5.0 rating across all completed projects. I specialize in identifying and resolving
+                        complex issues others can't fix — from performance bottlenecks and critical bugs to full ground-up builds.
+                        I treat every project as a business asset, prioritizing clean code, clear communication, and measurable results.
+                    </p>
+                </div>
+
+                <!-- Experience -->
+                <div class="section">
+                    <div class="section-title">Work Experience</div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title">Full Stack Laravel Developer</div>
+                            <div class="exp-date">2022 &ndash; Present</div>
+                        </div>
+                        <div class="exp-company">Upwork &mdash; Freelance (Top Rated Plus)</div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Delivered 11+ projects across diverse industries including education, healthcare, e-commerce, and SaaS.</li>
+                                <li>Maintained a 5.0 star rating with multiple repeat clients and active long-term contracts.</li>
+                                <li>Specialized in rescuing legacy codebases, resolving critical bugs, and optimizing slow applications.</li>
+                                <li>Built full-stack applications from scratch using Laravel, Vue.js, MySQL, and REST APIs.</li>
+                                <li>Handled high-traffic platforms serving 10,000+ concurrent users with performance optimization.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="exp-item">
+                        <div class="exp-header">
+                            <div class="exp-title">Full Stack Laravel Developer (Long-Term)</div>
+                            <div class="exp-date">2023 &ndash; Present</div>
+                        </div>
+                        <div class="exp-company">Eindexamensite &mdash; Dutch Educational Platform</div>
+                        <div class="exp-desc">
+                            <ul>
+                                <li>Stabilized codebase, optimized database queries, and enhanced backend logic for a large student-educator platform.</li>
+                                <li>Improved real-time student–teacher chat module and contributed to SSO integration.</li>
+                                <li>Ongoing full-stack development and maintenance role.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Key Projects -->
+                <div class="section">
+                    <div class="section-title">Key Projects</div>
+
+                    <div class="project-item">
+                        <div class="project-name">OpenAI Chatbot Platform</div>
+                        <div class="project-tags">
+                            <span class="project-tag">Built From Scratch</span>
+                        </div>
+                        <div class="project-desc">Admin &amp; User Dashboard with user management, chatbot training, file uploads for AI training, complex reporting with exports, tamper-proof activity logs, and product analytics. Stack: Laravel, Vue.js, OpenAI API, MySQL.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Houston Gold Merchants</div>
+                        <div class="project-tags">
+                            <span class="project-tag">Built From Scratch</span>
+                        </div>
+                        <div class="project-desc">Responsive product catalog with advanced filtering, user login, and contact forms. Deployed on Heroku. Stack: Laravel, MySQL, Heroku.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Healthcare Learning Platform</div>
+                        <div class="project-tags">
+                            <span class="project-tag">New Features</span>
+                        </div>
+                        <div class="project-desc">Filterable course catalog by specialty, type, and price. QR code integration for instant class joining. Stack: Laravel, MySQL, QR Codes.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">M-Geough Catalog Site</div>
+                        <div class="project-tags">
+                            <span class="project-tag">Built From Scratch</span>
+                        </div>
+                        <div class="project-desc">Filterable furniture, lighting &amp; fabric catalog with search by product type, manufacturer, and collection. Stack: Laravel, MySQL.</div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-name">Tallyfy &mdash; Workflow Automation</div>
+                        <div class="project-tags">
+                            <span class="project-tag">Backend Development</span>
+                        </div>
+                        <div class="project-desc">Backend development including database design, testing, debugging, refactoring, code review, and building an email system. Stack: Laravel, MySQL.</div>
+                    </div>
+
+                </div>
+
+                <!-- How I Work -->
+                <div class="section">
+                    <div class="section-title">Work Philosophy</div>
+                    <div class="exp-desc">
+                        <ul>
+                            <li>Study existing code thoroughly before making any changes</li>
+                            <li>Write clean, well-structured, and maintainable code</li>
+                            <li>Avoid over-engineering — prioritize ROI over lines of code</li>
+                            <li>Communicate clearly in simple, non-technical language</li>
+                            <li>Treat every project as a business asset, not just a task</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
